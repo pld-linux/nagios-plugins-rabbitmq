@@ -40,13 +40,13 @@ grep 'dist_version => "%{version}"' Build.PL
 
 %build
 %{__perl} Build.PL \
-	installdirs=vendor \
-	destdir=$RPM_BUILD_ROOT
+	installdirs=vendor
 ./Build
 
 %install
 rm -rf $RPM_BUILD_ROOT
-./Build install
+./Build pure_install \
+	destdir=$RPM_BUILD_ROOT
 
 install -d $RPM_BUILD_ROOT{%{_sysconfdir},%{plugindir}}
 mv $RPM_BUILD_ROOT{%{_bindir}/*,%{plugindir}}
@@ -56,6 +56,7 @@ rm -rf $RPM_BUILD_ROOT
 
 %files
 %defattr(644,root,root,755)
+%doc README.md
 %attr(755,root,root) %{plugindir}/check_rabbitmq_aliveness
 %attr(755,root,root) %{plugindir}/check_rabbitmq_objects
 %attr(755,root,root) %{plugindir}/check_rabbitmq_overview
