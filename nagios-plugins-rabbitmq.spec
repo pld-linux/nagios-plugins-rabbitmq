@@ -1,6 +1,6 @@
 %define		plugin	rabbitmq
 # enable here and BR deps, and noautoreq for Perl based plugins
-#%include	/usr/lib/rpm/macros.perl
+%include	/usr/lib/rpm/macros.perl
 Summary:	Nagios plugin to rabbitmq
 Summary(pl.UTF-8):	Wtyczka Nagiosa sprawdzająca rabbitmq
 Name:		nagios-plugins-%{plugin}
@@ -8,18 +8,15 @@ Version:	1.0.1
 Release:	0.3
 License:	Apache License v.2.0
 Group:		Networking
-## based on source https://github.com/jamesc/nagios-plugins-rabbitmq/tarball/master
-##		jamesc-nagios-plugins-rabbitmq-v1.0.1-8-g48d234e.tar.gz
-Source0:	%{name}-v%{version}.tar.gz
+Source0:	https://github.com/jamesc/nagios-plugins-rabbitmq/tarball/master#/nagios-plugins-%{plugin}.tar.gz
 # Source0-md5:	93333929a60df1102d1632f6d602daa1
 URL:		https://github.com/jamesc/nagios-plugins-rabbitmq/
 # enable for Perl based plugins
 BuildRequires:	perl-JSON >= 2.12
-#BuildRequires:	perl-devel >= 1:5.8.0
-#BuildRequires:	rpm-perlprov >= 4.1-13
-# Requires:	nagios-plugins-libs for utils.{sh,pm,php}, for Perl set noautoreq for perl(utils)
+BuildRequires:	perl-devel >= 1:5.8.0
+BuildRequires:	rpm-perlprov >= 4.1-13
 Requires:	nagios-common
-#Requires:	nagios-plugins-libs
+Requires:	nagios-plugins-libs
 Requires:	perl(JSON)
 Requires:	perl(LWP::UserAgent)
 Requires:	perl(Nagios::Plugin)
