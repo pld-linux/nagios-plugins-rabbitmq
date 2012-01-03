@@ -5,7 +5,7 @@ Summary:	Nagios plugin to rabbitmq
 Summary(pl.UTF-8):	Wtyczka Nagiosa sprawdzająca rabbitmq
 Name:		nagios-plugins-%{plugin}
 Version:	1.0.1
-Release:	0.1
+Release:	0.3
 License:	Apache License v.2.0
 Group:		Networking
 ## based on source https://github.com/jamesc/nagios-plugins-rabbitmq/tarball/master
@@ -20,6 +20,11 @@ BuildRequires:	perl-JSON >= 2.12
 # Requires:	nagios-plugins-libs for utils.{sh,pm,php}, for Perl set noautoreq for perl(utils)
 Requires:	nagios-common
 #Requires:	nagios-plugins-libs
+Requires:	perl(JSON)
+Requires:	perl(LWP::UserAgent)
+Requires:	perl(Nagios::Plugin)
+Requires:	perl(Getopt::Long)
+Requires:	perl(Pod::Usage)
 BuildArch:	noarch
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
