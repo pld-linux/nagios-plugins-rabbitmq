@@ -33,9 +33,6 @@ Wtyczka Nagiosa sprawdzająca rabbitmq.
 %setup -qc
 mv jamesc-%{name}-*/* .
 
-# fix #!%{_bindir}/env perl -w -> #!%{__perl}:
-%{__sed} -i -e '1s,^#!.*perl,#!%{__perl},' scripts/*
-
 grep 'dist_version => "%{version}"' Build.PL
 
 %build
@@ -50,6 +47,10 @@ rm -rf $RPM_BUILD_ROOT
 
 install -d $RPM_BUILD_ROOT{%{_sysconfdir},%{plugindir}}
 mv $RPM_BUILD_ROOT{%{_bindir}/*,%{plugindir}}
+
+# fix #!%{_bindir}/env perl -w -> #!%{__perl}:
+# need to do this after perl, or it will put interpreter as 'perl5.12.3'
+%{__sed} -i -e '1s,^#!.*perl,#!%{__perl},' $RPM_BUILD_ROOT%{plugindir}/*
 
 %clean
 rm -rf $RPM_BUILD_ROOT
