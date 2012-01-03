@@ -12,15 +12,13 @@ Group:		Networking
 ##		jamesc-nagios-plugins-rabbitmq-v1.0.1-8-g48d234e.tar.gz
 Source0:	%{name}-v%{version}.tar.gz
 # Source0-md5:	93333929a60df1102d1632f6d602daa1
-# Source1:	%{plugin}.cfg
-#Patch0:		%{name}-defaultpass.patch
 URL:		https://github.com/jamesc/nagios-plugins-rabbitmq/
 # enable for Perl based plugins
-#BuildRequires:	perl-devel >= 1:5.8.0
 BuildRequires:	perl-JSON >= 2.12
+#BuildRequires:	perl-devel >= 1:5.8.0
 #BuildRequires:	rpm-perlprov >= 4.1-13
-Requires:	nagios-common
 # Requires:	nagios-plugins-libs for utils.{sh,pm,php}, for Perl set noautoreq for perl(utils)
+Requires:	nagios-common
 #Requires:	nagios-plugins-libs
 BuildArch:	noarch
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
@@ -32,17 +30,13 @@ BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 %define		plugindir	%{_prefix}/lib/nagios/plugins
 
 %description
-Nagios plugin to check ...
+Nagios plugin to check rabbitmq.
 
 %description -l pl.UTF-8
-Wtyczka Nagiosa sprawdzająca ...
+Wtyczka Nagiosa sprawdzająca rabbitmq.
 
 %prep
 %setup -q -n jamesc-%{name}-48d234e
-
-##%build
-##%{__perl} Build.PL --installdir=vendor
-##./Build
 
 %install
 rm -rf $RPM_BUILD_ROOT
