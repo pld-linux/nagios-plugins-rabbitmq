@@ -6,7 +6,7 @@ Summary:	Nagios plugin to rabbitmq
 Summary(pl.UTF-8):	Wtyczka Nagiosa sprawdzająca rabbitmq
 Name:		nagios-plugins-%{plugin}
 Version:	1.0.4
-Release:	0.5
+Release:	0.6
 License:	Apache License v2.0
 Group:		Networking
 Source0:	https://github.com/jamesc/nagios-plugins-rabbitmq/tarball/master#/%{plugin}-%{version}.tar.gz
@@ -14,6 +14,8 @@ Source0:	https://github.com/jamesc/nagios-plugins-rabbitmq/tarball/master#/%{plu
 Source1:	check_rabbitmq_alive.cfg
 Source2:	check_rabbitmq_overview.cfg
 Source3:	check_rabbitmq_objects.cfg
+Source4:	check_rabbitmq_queue.cfg
+Source5:	check_rabbitmq_server.cfg
 URL:		https://github.com/jamesc/nagios-plugins-rabbitmq/
 BuildRequires:	perl-JSON >= 2.12
 BuildRequires:	perl-devel >= 1:5.8.0
@@ -54,6 +56,8 @@ mv $RPM_BUILD_ROOT{%{_bindir}/*,%{plugindir}}
 cp -p %{SOURCE1} $RPM_BUILD_ROOT%{_sysconfdir}/
 cp -p %{SOURCE2} $RPM_BUILD_ROOT%{_sysconfdir}/
 cp -p %{SOURCE3} $RPM_BUILD_ROOT%{_sysconfdir}/
+cp -p %{SOURCE4} $RPM_BUILD_ROOT%{_sysconfdir}/
+cp -p %{SOURCE5} $RPM_BUILD_ROOT%{_sysconfdir}/
 
 # fix #!%{_bindir}/env perl -w -> #!%{__perl}:
 # need to do this after perl, or it will put interpreter as 'perl5.12.3'
