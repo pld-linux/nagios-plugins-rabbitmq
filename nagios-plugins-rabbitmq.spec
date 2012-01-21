@@ -53,14 +53,12 @@ rm -rf $RPM_BUILD_ROOT
 
 install -d $RPM_BUILD_ROOT{%{_sysconfdir},%{plugindir}}
 mv $RPM_BUILD_ROOT{%{_bindir}/*,%{plugindir}}
-cp -p %{SOURCE1} $RPM_BUILD_ROOT%{_sysconfdir}/
-cp -p %{SOURCE2} $RPM_BUILD_ROOT%{_sysconfdir}/
-cp -p %{SOURCE3} $RPM_BUILD_ROOT%{_sysconfdir}/
-cp -p %{SOURCE4} $RPM_BUILD_ROOT%{_sysconfdir}/
-cp -p %{SOURCE5} $RPM_BUILD_ROOT%{_sysconfdir}/
+install %{SOURCE1} $RPM_BUILD_ROOT%{_sysconfdir}
+install %{SOURCE2} $RPM_BUILD_ROOT%{_sysconfdir}
+install %{SOURCE3} $RPM_BUILD_ROOT%{_sysconfdir}
+install %{SOURCE4} $RPM_BUILD_ROOT%{_sysconfdir}
+install %{SOURCE5} $RPM_BUILD_ROOT%{_sysconfdir}
 
-# fix #!%{_bindir}/env perl -w -> #!%{__perl}:
-# need to do this after perl, or it will put interpreter as 'perl5.12.3'
 %{__sed} -i -e '1s,^#!.*perl,#!%{__perl},' $RPM_BUILD_ROOT%{plugindir}/*
 
 %clean
@@ -69,7 +67,7 @@ rm -rf $RPM_BUILD_ROOT
 %files
 %defattr(644,root,root,755)
 %doc README.md
-%attr(644,root,root) %{_sysconfdir}/check_rabbitmq_*
+%{_sysconfdir}/check_rabbitmq_*
 %attr(755,root,root) %{plugindir}/check_rabbitmq_aliveness
 %attr(755,root,root) %{plugindir}/check_rabbitmq_objects
 %attr(755,root,root) %{plugindir}/check_rabbitmq_overview
