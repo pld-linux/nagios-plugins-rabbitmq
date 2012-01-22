@@ -67,7 +67,7 @@ rm -rf $RPM_BUILD_ROOT
 %files
 %defattr(644,root,root,755)
 %doc README.md
-%{_sysconfdir}/check_rabbitmq_*
+%attr(640,root,nagios) %config(noreplace) %verify(not md5 mtime size) %{_sysconfdir}/check_%{plugin}*.cfg
 %attr(755,root,root) %{plugindir}/check_rabbitmq_aliveness
 %attr(755,root,root) %{plugindir}/check_rabbitmq_objects
 %attr(755,root,root) %{plugindir}/check_rabbitmq_overview
