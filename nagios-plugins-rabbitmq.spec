@@ -1,7 +1,6 @@
 # TODO
 # - plugin config
 %define		plugin	rabbitmq
-%include	/usr/lib/rpm/macros.perl
 Summary:	Nagios plugin to rabbitmq
 Summary(pl.UTF-8):	Wtyczka Nagiosa sprawdzająca rabbitmq
 Name:		nagios-plugins-%{plugin}
